@@ -72,7 +72,7 @@ public class fileController {
     // }
 
     @GetMapping("/download/{id}")
-     public ResponseEntity<?> downloadFile(@PathVariable("id") String id, Model model) {
+     public ResponseEntity<?> downloadFile(@PathVariable("id") String id) {
         return fileService.getFile(id);
     }
 
