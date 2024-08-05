@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Share File</title>
+</head>
+<body>
+    <h1>Download File</h1>
+    <p>File Name: <span th:text="${file.fileName}"></span></p>
+    <p>Uploaded By: <span th:text="${file.uploadedBy}"></span></p>
+    <a th:href="@{/files/download/{id}(id=${file.id})}" >
+        <button>Download File</button>
+    </a>
+    <a href="/files">Back to File List</a>
+</body>
+</html>
