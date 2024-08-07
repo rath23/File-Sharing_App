@@ -26,10 +26,6 @@ public class fileController {
         return "list-files";
     }
 
-//    @GetMapping("/")
-//    public ResponseEntity<?> getAll(){
-//        return ResponseEntity.ok().body(fileService.getAllFiles());
-//    }
 
      @PostMapping("/upload")
      public String uploadFile(@RequestParam("file") MultipartFile file,
@@ -38,11 +34,7 @@ public class fileController {
          return "redirect:/files";
      }
 
-//    @PostMapping("/upload")
-//    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file,
-//            @RequestParam("uploadedBy") String uploadedBy) throws IOException {
-//        return fileService.uploadFile(file, uploadedBy);
-//    }
+
 
        @GetMapping("/share/{id}")
     public String shareFile(@PathVariable("id") String id, Model model) {
@@ -58,21 +50,6 @@ public class fileController {
         }
     }
 
-    // @GetMapping("/{id}")
-    // public ResponseEntity<?> downloadFile(@PathVariable String id) {
-    //     return fileService.getFile(id);
-    // }
-
-    //     @GetMapping("/download/{id}")
-    // public String downloadFile(@PathVariable("id") String id, Model model) {
-    //     ResponseEntity<?> file = fileService.getFile(id);
-    //     if (file.hasBody()) {
-    //         model.addAttribute("file", file.getBody());
-    //         return "redirect:/share-file";
-    //     } else {
-    //         return "redirect:/files";
-    //     }
-    // }
 
     @GetMapping("/download/{id}")
      public ResponseEntity<?> downloadFile(@PathVariable("id") String id) {
