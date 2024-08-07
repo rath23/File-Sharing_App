@@ -95,6 +95,7 @@ public class FileServiceImpl implements FileService {
             return ResponseEntity.ok().body(fileModel);
  }
  else{
+    System.out.println("File with ID " + id + " not found");
      throw new FileNotFoundException("File not found");
  }
 }

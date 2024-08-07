@@ -2,6 +2,7 @@ package com.mycompany.filesharing.controller;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.mycompany.filesharing.service.FileService;
 
@@ -43,10 +44,12 @@ public class fileController {
 //        return fileService.uploadFile(file, uploadedBy);
 //    }
 
-       @PostMapping("/share/{id}")
+       @GetMapping("/share/{id}")
     public String shareFile(@PathVariable("id") String id, Model model) {
         ResponseEntity<?> fileModel = fileService.shareFile(id);
         if(fileModel.hasBody()) {
+            String currentUrl = ServletUriComponentsBuilder.fromCurrentRequestUri().toUriString();
+            model.addAttribute("shareUrl", currentUrl);                       
             model.addAttribute("file", fileModel.getBody());
             return "share-file"; 
         }

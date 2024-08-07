@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Share File</title>
-  <!--  <link rel="stylesheet" href="styles2.css">  -->
-    <style>
-        /* General Styles */
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #121212;
@@ -92,39 +86,3 @@ input[type="text"] {
         padding: 8px;
     }
 }
-
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- File Information Section -->
-        <div class="box">
-            <h1>Download File</h1>
-            <p>File Name: <span th:text="${file.fileName}"></span></p>
-            <p>Uploaded By: <span th:text="${file.uploadedBy}"></span></p>
-            <form th:action="@{/files/download/{id}(id=${file.id})}">
-                <button type="submit" >Download File</button>
-            </form>
-        </div>
-
-        <!-- URL Share Box Section -->
-        <div class="box">
-            <h2>Share This Page</h2>
-            <p>URL: <input type="text" id="shareUrl" th:value="${shareUrl}" readonly/></p>
-            <button onclick="copyToClipboard()">Copy URL</button>
-        </div>
-
-        <a href="/files">Back to File List</a>
-    </div>
-
-    <script>
-        function copyToClipboard() {
-            var copyText = document.getElementById("shareUrl");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); // For mobile devices
-            document.execCommand("copy");
-            alert("URL copied to clipboard: " + copyText.value);
-        }
-    </script>
-</body>
-</html>
