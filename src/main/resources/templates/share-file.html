@@ -2,102 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Share File</title>
-  <!--  <link rel="stylesheet" href="styles2.css">  -->
-    <style>
-        /* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 95%;
-    max-width: 800px;
-}
-
-.box {
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.5s, box-shadow 0.5s;
-    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
-}
-
-.box:hover {
-    transform: rotateY(10deg);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
-}
-
-h1, h2 {
-    color: #e0e0e0;
-    margin-top: 0;
-}
-
-p {
-    margin: 10px 0;
-}
-
-button {
-    background-color: #6200ea;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-button:hover {
-    background-color: #3700b3;
-    transform: scale(1.05);
-}
-
-input[type="text"] {
-    width: calc(100% - 22px); /* Adjust width to account for padding and border */
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #333;
-    background-color: #1e1e1e;
-    color: #ffffff;
-    box-sizing: border-box; /* Ensure padding is included in the total width */
-    margin-bottom: 10px;
-}
-
-/* Responsive Design */
-@media (max-width: 599px) {
-    .box {
-        width: 100%;
-        box-shadow: none;
-    }
-
-    /* Adjust button padding and input field padding on smaller screens */
-    button {
-        padding: 8px 16px;
-    }
-
-    input[type="text"] {
-        padding: 8px;
-    }
-}
-
-    </style>
+   <link rel="stylesheet" href="\css\styles2.css">
+ 
 </head>
 <body>
     <div class="container">
-        <!-- File Information Section -->
+    
         <div class="box">
             <h1>Download File</h1>
             <p>File Name: <span th:text="${file.fileName}"></span></p>
@@ -107,7 +17,7 @@ input[type="text"] {
             </form>
         </div>
 
-        <!-- URL Share Box Section -->
+    
         <div class="box">
             <h2>Share This Page</h2>
             <p>URL: <input type="text" id="shareUrl" th:value="${shareUrl}" readonly/></p>
@@ -121,7 +31,7 @@ input[type="text"] {
         function copyToClipboard() {
             var copyText = document.getElementById("shareUrl");
             copyText.select();
-            copyText.setSelectionRange(0, 99999); // For mobile devices
+            copyText.setSelectionRange(0, 99999);
             document.execCommand("copy");
             alert("URL copied to clipboard: " + copyText.value);
         }
