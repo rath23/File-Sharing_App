@@ -4,7 +4,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+
+import com.mycompany.filesharing.model.UserInfoModel;
 import com.mycompany.filesharing.service.FileService;
+import com.mycompany.filesharing.service.UserService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.IOException;
 
@@ -20,18 +25,48 @@ public class fileController {
     @Autowired
     private FileService fileService;
 
-    @GetMapping
-    public String listFiles(Model model) {
-        model.addAttribute("files", fileService.getAllFiles());
-        return "list-files";
+        @Autowired
+    private UserService userService;
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String showRegistrationForm() {
+        return "registration";
+    }
+
+    @PostMapping("/registered")
+    public String registerUser(@ModelAttribute UserInfoModel user) {
+        userService.saveUser(user);
+        return "redirect:/login";
+    }
+
+
+    // @GetMapping("/home")
+    // public String listFiles(Model model,Principal principal) {
+    //     String email = ((CustomUserDetails) ((Authentication) principal).getPrincipal()).getUsername();
+    //     model.addAttribute("userName", userService.findByEmail(email).getUsername());
+    //     model.addAttribute("files", fileService.getAllFiles());
+    //     return "list-files";
+    // }
+
+        @GetMapping("/home")
+    public String listFiles(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        String email = userDetails.getUsername();
+            model.addAttribute("userName", userService.findByEmail(email).getUsername());
+            model.addAttribute("files", fileService.getAllFiles(userDetails));
+            return "list-files";
     }
 
 
      @PostMapping("/upload")
-     public String uploadFile(@RequestParam("file") MultipartFile file,
+     public String uploadFile(@RequestParam("file") MultipartFile file,@AuthenticationPrincipal UserDetails userDetails,
              @RequestParam("uploadedBy") String uploadedBy) throws IOException {
-         fileService.uploadFile(file, uploadedBy);
-         return "redirect:/files";
+         fileService.uploadFile(file, uploadedBy,userDetails);
+         return "redirect:/files/home";
      }
 
 
@@ -59,13 +94,13 @@ public class fileController {
 
 
     @PostMapping("/delete/{id}")
-    public String deleteFile(@PathVariable String id) {
-        ResponseEntity<?> file = fileService.deleteFile(id);
+    public String deleteFile(@PathVariable String id, @AuthenticationPrincipal UserDetails userDetails) {
+        ResponseEntity<?> file = fileService.deleteFile(id,userDetails);
         if(file.hasBody()){
-            return "redirect:/files";
+            return "redirect:/files/home";
         }
         else{
-            return "downloadError";
+            return "redirect:/files";
         }
        
     }

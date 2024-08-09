@@ -11,4 +11,8 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleFileNotFound(FileNotFoundException ex) {
         return ResponseEntity.badRequest().body(ex.getMessage());
     }
+    @ExceptionHandler(UserEmailNotFound.class)
+    public ResponseEntity<?> handleCanvasNotFoundException(UserEmailNotFound e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
 }

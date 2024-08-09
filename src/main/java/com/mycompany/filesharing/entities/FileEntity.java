@@ -19,6 +19,9 @@ public class FileEntity{
     private String uploadedBy;
     private LocalDateTime uploadTime;
     private LocalDateTime expiryTime;
+    
+    @ManyToOne
+    private UserInfo userInfo;
 
     @Lob
     @Column(name = "file_data", columnDefinition="LONGBLOB")
@@ -31,6 +34,5 @@ public class FileEntity{
         }
     }
 
-    // Getters and setters
 } 
     

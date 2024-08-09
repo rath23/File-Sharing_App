@@ -16,7 +16,7 @@ body {
     flex-direction: column;
     gap: 20px;
     width: 95%;
-    max-width: 1200px;
+    max-width: 800px;
 }
 
 .box {
@@ -27,7 +27,7 @@ body {
     width: 100%;
     transform-style: preserve-3d;
     transition: transform 0.5s, box-shadow 0.5s;
-    box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 
 .box:hover {
@@ -40,24 +40,8 @@ h1, h2 {
     margin-top: 0;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-    font-size: 14px;
-}
-
-thead {
-    background-color: #333;
-}
-
-tr:nth-child(even) {
-    background-color: #2c2c2c;
+p {
+    margin: 10px 0;
 }
 
 button {
@@ -75,19 +59,29 @@ button:hover {
     transform: scale(1.05);
 }
 
-input[type="file"], input[type="text"] {
+input[type="text"], input[type="password"] {
     width: calc(100% - 22px); /* Adjust width to account for padding and border */
-    margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #333;
     background-color: #1e1e1e;
     color: #ffffff;
     box-sizing: border-box; /* Ensure padding is included in the total width */
+    margin-bottom: 10px;
 }
 
-input[type="text"]::placeholder {
-    color: #888;
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+.error {
+    color: red;
 }
 
 /* Responsive Design */
@@ -97,17 +91,12 @@ input[type="text"]::placeholder {
         box-shadow: none;
     }
 
-    /* Adjust table padding and font sizes on smaller screens */
-    th, td {
-        padding: 8px;
-        font-size: 12px;
-    }
-
+    /* Adjust button padding and input field padding on smaller screens */
     button {
         padding: 8px 16px;
     }
 
-    input[type="file"], input[type="text"] {
+    input[type="text"], input[type="password"] {
         padding: 8px;
     }
 }

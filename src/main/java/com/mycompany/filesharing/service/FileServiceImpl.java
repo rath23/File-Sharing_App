@@ -11,25 +11,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.filesharing.entities.FileEntity;
+import com.mycompany.filesharing.entities.UserInfo;
 import com.mycompany.filesharing.model.FileModel;
 import com.mycompany.filesharing.repository.FileRepository;
+import com.mycompany.filesharing.repository.UserInfoRepository;
 import com.mycompany.filesharing.exception.FileNotFoundException;
+import com.mycompany.filesharing.exception.UserEmailNotFound;
 
 @Service
 public class FileServiceImpl implements FileService {
     @Autowired
     private FileRepository fileRepository;
 
-    public ResponseEntity<?> uploadFile(MultipartFile file, String uploadedBy) throws IOException {
+    @Autowired
+    private UserInfoRepository userInfoRepository;
+
+    public ResponseEntity<?> uploadFile(MultipartFile file, String uploadedBy,UserDetails userDetails) throws IOException {
+        UserInfo user = userInfoRepository.findByEmail(userDetails.getUsername())
+        .orElseThrow(() -> new RuntimeException("User not found"));
+
         FileEntity fileEntity = new FileEntity();
         fileEntity.setFileName(file.getOriginalFilename());
         fileEntity.setUploadedBy(uploadedBy);
         fileEntity.setUploadTime(LocalDateTime.now());
         fileEntity.setExpiryTime(LocalDateTime.now().plusDays(1)); // 24 hours expiry
+        fileEntity.setUserInfo(user);
         fileEntity.setFileData(file.getBytes());
         fileRepository.save(fileEntity);
         FileModel fileModel = new FileModel();
@@ -53,15 +64,23 @@ public class FileServiceImpl implements FileService {
         }
     }
 
-    public ResponseEntity<?> deleteFile(String id) {
+    public ResponseEntity<?> deleteFile(String id, UserDetails userDetails) {
+        UserInfo user = userInfoRepository.findByEmail(userDetails.getUsername())
+        .orElseThrow(() -> new RuntimeException("User not found"));
+        
         Optional <FileEntity> entity = fileRepository.findById(id);
+        if (entity.get().getUserInfo().equals(user)) {
         if(entity.isPresent()){
             fileRepository.delete(entity.get());
             return ResponseEntity.ok().body("Deleted successfully");
         }
         else{
             throw new FileNotFoundException("File not found");
+        }}
+        else{
+            throw new UserEmailNotFound("Can't delete file as user info does not match");
         }
+
     }
 
     @Scheduled(cron = "0 0 * * * *") // Runs every second
@@ -77,9 +96,12 @@ public class FileServiceImpl implements FileService {
         return model;
     }
 
+    
     @Override
-    public List<FileModel> getAllFiles() {
-        List<FileEntity> entityList = fileRepository.findAll();
+    public List<FileModel> getAllFiles(UserDetails userDetails) {
+        UserInfo user = userInfoRepository.findByEmail(userDetails.getUsername())
+        .orElseThrow(() -> new RuntimeException("User not found"));
+        List<FileEntity> entityList = fileRepository.findByUserInfo(user);
         return entityList.stream()
                 .map(this::convertToModel)
                 .collect(Collectors.toList());
@@ -95,7 +117,6 @@ public class FileServiceImpl implements FileService {
             return ResponseEntity.ok().body(fileModel);
  }
  else{
-    System.out.println("File with ID " + id + " not found");
      throw new FileNotFoundException("File not found");
  }
 }
