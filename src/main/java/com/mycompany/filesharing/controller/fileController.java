@@ -45,14 +45,6 @@ public class fileController {
     }
 
 
-    // @GetMapping("/home")
-    // public String listFiles(Model model,Principal principal) {
-    //     String email = ((CustomUserDetails) ((Authentication) principal).getPrincipal()).getUsername();
-    //     model.addAttribute("userName", userService.findByEmail(email).getUsername());
-    //     model.addAttribute("files", fileService.getAllFiles());
-    //     return "list-files";
-    // }
-
         @GetMapping("/home")
     public String listFiles(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         String email = userDetails.getUsername();

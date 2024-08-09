@@ -15,7 +15,6 @@ public interface FileService {
         public ResponseEntity<?> getFile(String id);
         public ResponseEntity<?> deleteFile(String id,UserDetails userDetails) ;
         public void deleteExpiredFiles();
-       // public List<FileModel> getAllFiles();
        public List<FileModel> getAllFiles(UserDetails userDetails);
         public ResponseEntity<?> shareFile(String id);
 }
