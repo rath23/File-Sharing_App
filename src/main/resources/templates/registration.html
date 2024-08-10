@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <link rel="icon" type="image/png" th:href="@{images/file-sharing.png}">
+    <link th:href="@{/styles/css/register.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <!-- Registration Box -->
+        <div class="box">
+            <h1>Register</h1>
+            <form th:action="@{/files/registered}" method="post">
+                <div>
+                    <label>Username:</label>
+                    <input type="text" name="username" required/>
+                </div>
+                <div>
+                    <label>Password:</label>
+                    <input type="password" id="password" name="password" required/>
+                </div>
+                <div>
+                    <label>Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required/>
+                    <span class="error" id="error-message" style="display:none;">Passwords do not match</span>
+                </div>
+                <div>
+                    <label>Email:</label>
+                    <input type="text" name="email" required/>
+                </div>
+                <div>
+                    <button type="submit">Register</button>
+                </div>
+            </form>
+            <div>
+                <button onclick="window.location.href='/login'">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const errorMessage = document.getElementById('error-message');
+
+        function validatePassword() {
+            if (password.value !== confirmPassword.value) {
+                confirmPassword.style.borderColor = 'red';
+                errorMessage.style.display = 'inline';
+            } else {
+                confirmPassword.style.borderColor = '';
+                errorMessage.style.display = 'none';
+            }
+        }
+
+        password.addEventListener('input', validatePassword);
+        confirmPassword.addEventListener('input', validatePassword);
+    </script>
+</body>
+</html>
