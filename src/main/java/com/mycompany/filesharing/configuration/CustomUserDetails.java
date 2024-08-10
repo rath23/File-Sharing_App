@@ -13,13 +13,14 @@ public class CustomUserDetails implements UserDetails {
     private String email;
     private String password;
     private List<GrantedAuthority> authorities;
+    private boolean enabled;
     
 
     public CustomUserDetails(UserInfo userInfo) {
-     email = userInfo.getEmail();
-     password = userInfo.getPassword();
-     authorities = null;
-
+     this.email = userInfo.getEmail();
+     this.password = userInfo.getPassword();
+     this.authorities = null;
+     this.enabled = userInfo.isEnabled();
     }
 
     @Override
@@ -37,6 +38,9 @@ public class CustomUserDetails implements UserDetails {
         return email;
     }
 
-  
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
 
 }

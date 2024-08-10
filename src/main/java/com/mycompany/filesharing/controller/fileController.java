@@ -8,12 +8,18 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.mycompany.filesharing.model.UserInfoModel;
 import com.mycompany.filesharing.service.FileService;
 import com.mycompany.filesharing.service.UserService;
+
+import jakarta.mail.MessagingException;
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,10 +45,15 @@ public class fileController {
     }
 
     @PostMapping("/registered")
-    public String registerUser(@ModelAttribute UserInfoModel user) {
-        userService.saveUser(user);
-        return "redirect:/login";
+    public String registerUser(@ModelAttribute UserInfoModel user,HttpServletRequest request) throws UnsupportedEncodingException, MessagingException {
+        userService.saveUser(user,getSiteURL(request));
+        return "register-process";
     }
+
+    private String getSiteURL(HttpServletRequest request) {
+        String siteURL = request.getRequestURL().toString();
+        return siteURL.replace(request.getServletPath(), "");
+    }  
 
 
         @GetMapping("/home")
@@ -96,4 +107,12 @@ public class fileController {
         }
        
     }
+    @GetMapping("/verify")
+public String verifyUser(@Param("code") String code) {
+    if (userService.verify(code)) {
+        return "verify_success";
+    } else {
+        return "verify_fail";
+    }
+}
 }

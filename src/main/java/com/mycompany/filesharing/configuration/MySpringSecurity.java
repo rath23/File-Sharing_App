@@ -25,7 +25,7 @@ public class MySpringSecurity {
     public SecurityFilterChain mySecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/files/register", "/files/registered", "/files/login","/files/share/{id}","/files/download/{id}").permitAll()
+                        .requestMatchers("/files/register", "/files/registered","/files/verify", "/files/login","/files/share/{id}","/files/download/{id}").permitAll()
                         .requestMatchers("/styles/**").permitAll()
                         .requestMatchers("/files/home","/files/upload","/files/delete/{id}").authenticated())
                         .formLogin(form -> form

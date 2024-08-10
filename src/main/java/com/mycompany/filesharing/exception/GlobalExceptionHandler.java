@@ -15,4 +15,8 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleCanvasNotFoundException(UserEmailNotFound e) {
         return ResponseEntity.badRequest().body(e.getMessage());
     }
+    @ExceptionHandler(UserEmailAlraedyExists.class)
+    public ResponseEntity<?> handleUserEmailAlraedyExist(UserEmailAlraedyExists e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
 }

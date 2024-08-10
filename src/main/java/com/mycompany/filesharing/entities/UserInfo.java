@@ -1,6 +1,7 @@
 package com.mycompany.filesharing.entities;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,5 +17,8 @@ public class UserInfo {
     private String username;
     private String password;    
     private String email;
-
+    @Column(name = "verification_code", length = 64)
+    private String verificationCode;
+     
+    private boolean enabled;
 }
