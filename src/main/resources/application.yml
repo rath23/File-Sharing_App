@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: filesharing
+  mvc:
+    static-path-pattern: /**
+
+  profiles:
+    active: ${ENV:dev}
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: filesharing1306@gmail.com
+    password: uktfbbvogpfnebih
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
