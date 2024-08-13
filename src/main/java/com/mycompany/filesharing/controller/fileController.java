@@ -36,7 +36,7 @@ public class fileController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "Login";
     }
 
     @GetMapping("/register")
