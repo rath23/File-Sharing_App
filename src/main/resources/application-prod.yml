@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:mysql://muneer-server01-file-sharing.k.aivencloud.com:21532/defaultdb
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    username: avnadmin
+    password: AVNS_e4imt-YVjIzuPKbBq-2
   jpa:
     hibernate:
       ddl-auto: update
