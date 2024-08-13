@@ -11,6 +11,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+
+import com.mycompany.filesharing.exception.CustomAuthenticationFailureHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -19,6 +22,11 @@ public class MySpringSecurity {
     @Bean
     public UserDetailsService userDetailsService() {
         return new CustomUserDetailsService();
+    }
+
+        @Bean
+    public AuthenticationFailureHandler customAuthenticationFailureHandler() {
+        return new CustomAuthenticationFailureHandler();
     }
 
       @Bean
@@ -32,6 +40,7 @@ public class MySpringSecurity {
                         .loginPage("/files/login")
                         .usernameParameter("email")
                         .defaultSuccessUrl("/files/home",true)
+                        .failureHandler(customAuthenticationFailureHandler())
                         .permitAll())
                 .logout(LogoutConfigurer::permitAll);
         return http.build();
