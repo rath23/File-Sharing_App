@@ -13,10 +13,11 @@ body {
 
 .container {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 95%;
-    max-width: 800px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px; /* Add padding to the container */
+    box-sizing: border-box;
 }
 
 .box {
@@ -25,13 +26,12 @@ body {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     width: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.5s, box-shadow 0.5s;
+    max-width: 500px; /* Set a maximum width for better fit */
     box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+    text-align: center; /* Center align text */
 }
 
-
-h1, h2 {
+h3, h4 {
     color: #e0e0e0;
     margin-top: 0;
 }
@@ -40,59 +40,38 @@ p {
     margin: 10px 0;
 }
 
-button {
-    background-color: #6200ea;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+a {
+    color: #6200ea;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-button:hover {
-    background-color: #3700b3;
-    transform: scale(1.05);
-}
-
-input[type="text"], input[type="password"] {
-    width: calc(100% - 22px); /* Adjust width to account for padding and border */
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #333;
-    background-color: #1e1e1e;
-    color: #ffffff;
-    box-sizing: border-box; /* Ensure padding is included in the total width */
-    margin-bottom: 10px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-form div {
-    margin-bottom: 15px;
-}
-
-.error {
-    color: red;
+a:hover {
+    text-decoration: underline;
 }
 
 /* Responsive Design */
 @media (max-width: 599px) {
+    .container {
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+
     .box {
-        width: 100%;
-        box-shadow: none;
+        padding: 15px; /* Adjust padding in the box */
+    }
+}
+
+/* Further Mobile Enhancements */
+@media (max-width: 399px) {
+    .box {
+        padding: 10px; /* Further reduce padding on very small screens */
     }
 
-    /* Adjust button padding and input field padding on smaller screens */
-    button {
-        padding: 8px 16px;
+    h3, h4 {
+        font-size: 16px; /* Adjust font size for very small screens */
     }
 
-    input[type="text"], input[type="password"] {
-        padding: 8px;
+    p {
+        font-size: 14px; /* Adjust font size for very small screens */
     }
 }
