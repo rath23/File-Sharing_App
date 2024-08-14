@@ -9,6 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .container {
@@ -26,15 +27,14 @@ body {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     width: 100%;
-    max-width: 400px; /* Set a maximum width for better fit */
+    max-width: 500px; /* Set a maximum width for better fit */
     box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+    text-align: center; /* Center align text */
 }
 
-/* Heading Styles */
-h1, h2 {
+h1, h2, h3 {
     color: #e0e0e0;
     margin-top: 0;
-    text-align: center; /* Center align the heading */
 }
 
 p {
@@ -57,7 +57,7 @@ button:hover {
     transform: scale(1.05);
 }
 
-input[type="email"], input[type="password"] {
+input[type="email"], input[type="password"], input[type="text"] {
     width: 100%; /* Make input fields full-width */
     padding: 10px;
     border-radius: 5px;
@@ -78,6 +78,20 @@ form div {
     margin-bottom: 15px;
 }
 
+.error {
+    color: red;
+}
+
+a {
+    color: #6200ea;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 /* Responsive Design */
 @media (max-width: 599px) {
     .container {
@@ -86,13 +100,15 @@ form div {
 
     .box {
         padding: 15px; /* Adjust padding in the box */
+        max-width: 100%; /* Ensure box uses full width on smaller screens */
+        box-shadow: none; /* Optional: Remove shadow for a cleaner look on mobile */
     }
 
     button {
         padding: 8px 16px;
     }
 
-    input[type="email"], input[type="password"] {
+    input[type="email"], input[type="password"], input[type="text"] {
         padding: 8px;
     }
 }
@@ -101,6 +117,15 @@ form div {
 @media (max-width: 399px) {
     .box {
         padding: 10px; /* Further reduce padding on very small screens */
+        max-width: 100%; /* Ensure box uses full width on very small screens */
+    }
+
+    h1, h2, h3 {
+        font-size: 16px; /* Adjust font size for very small screens */
+    }
+
+    p {
+        font-size: 14px; /* Adjust font size for very small screens */
     }
 
     button {
@@ -108,7 +133,7 @@ form div {
         font-size: 14px;
     }
 
-    input[type="email"], input[type="password"] {
+    input[type="email"], input[type="password"], input[type="text"] {
         padding: 6px;
         font-size: 14px;
     }
