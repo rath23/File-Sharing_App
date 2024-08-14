@@ -8,8 +8,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start; /* Align to the top so it doesn't push content down */
-    height: 100vh; /* Full viewport height */
-    overflow: hidden; /* Prevent body scroll */
+    min-height: 100vh; /* Ensure body covers full viewport height */
+    overflow: auto; /* Enable scrolling if content exceeds viewport height */
 }
 
 .navbar {
@@ -35,10 +35,10 @@ body {
     gap: 20px;
     padding: 20px; /* Add padding to avoid content touching the edges */
     max-width: 1200px; /* Set a maximum width for the container */
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden; /* Hide overflow on larger screens */
-    height: calc(100vh - 60px); /* Ensure full viewport height minus the navbar height */
     box-sizing: border-box; /* Ensure padding is included in the element's total width */
 }
 
@@ -155,8 +155,8 @@ input[type="text"]::placeholder {
 @media (max-width: 599px) {
     .container {
         padding: 10px; /* Reduce padding on smaller screens */
-        height: auto; /* Allow height to adjust based on content */
         width: 80%; /* Set width to 80% on mobile screens */
+        height: auto; /* Allow height to adjust based on content */
     }
 
     .uploaded-files-box {
