@@ -9,6 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .container {
@@ -99,6 +100,8 @@ a:hover {
 
     .box {
         padding: 15px; /* Adjust padding in the box */
+        max-width: 100%; /* Ensure box uses full width on smaller screens */
+        box-shadow: none; /* Optional: Remove shadow for a cleaner look on mobile */
     }
 
     button {
@@ -114,6 +117,7 @@ a:hover {
 @media (max-width: 399px) {
     .box {
         padding: 10px; /* Further reduce padding on very small screens */
+        max-width: 100%; /* Ensure box uses full width on very small screens */
     }
 
     h3, h4 {
