@@ -82,14 +82,17 @@ body {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     width: 100%;
-    max-width: 600px; /* Set a maximum width for better fit */
     transform-style: preserve-3d;
     transition: transform 0.5s, box-shadow 0.5s;
     box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
-    margin: auto; /* Center the box horizontally */
 }
 
-/* Table Styles */
+
+h1, h2 {
+    color: #e0e0e0;
+    margin-top: 0;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -158,4 +161,6 @@ input[type="text"]::placeholder {
     }
 
     input[type="file"], input[type="text"] {
-        padding:
+        padding: 8px;
+    }
+}
