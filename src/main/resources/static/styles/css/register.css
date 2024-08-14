@@ -31,13 +31,54 @@ body {
     text-align: center; /* Center align text */
 }
 
-h3, h4 {
+h1, h2, h3, h4 {
     color: #e0e0e0;
     margin-top: 0;
 }
 
 p {
     margin: 10px 0;
+}
+
+button {
+    background-color: #6200ea;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%; /* Make button full-width */
+}
+
+button:hover {
+    background-color: #3700b3;
+    transform: scale(1.05);
+}
+
+input[type="email"], input[type="password"], input[type="text"] {
+    width: 100%; /* Make input fields full-width */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    box-sizing: border-box; /* Ensure padding is included in the total width */
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+.error {
+    color: red;
 }
 
 a {
@@ -59,6 +100,14 @@ a:hover {
     .box {
         padding: 15px; /* Adjust padding in the box */
     }
+
+    button {
+        padding: 8px 16px;
+    }
+
+    input[type="email"], input[type="password"], input[type="text"] {
+        padding: 8px;
+    }
 }
 
 /* Further Mobile Enhancements */
@@ -73,5 +122,15 @@ a:hover {
 
     p {
         font-size: 14px; /* Adjust font size for very small screens */
+    }
+
+    button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    input[type="email"], input[type="password"], input[type="text"] {
+        padding: 6px;
+        font-size: 14px;
     }
 }
