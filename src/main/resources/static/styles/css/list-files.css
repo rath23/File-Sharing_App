@@ -33,13 +33,12 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 20px; /* Add padding to avoid content touching the edges */
-    max-width: 1200px; /* Set a maximum width for the container */
-    margin-left: auto;
-    margin-right: auto;
-    overflow: hidden; /* Hide overflow on larger screens */
-    height: calc(100vh - 60px); /* Ensure full viewport height minus the navbar height */
+    padding: 0 10px; /* Add padding to avoid content touching the edges */
+    max-width: 100%; /* Ensure it does not exceed viewport width */
     box-sizing: border-box; /* Ensure padding is included in the element's total width */
+    overflow: hidden; /* Hide overflow on larger screens */
+    width: calc(100% - 20px); /* Full width minus padding */
+    height: calc(100vh - 60px); /* Ensure full viewport height minus the navbar height */
 }
 
 /* Uploaded Files Box Styles */
@@ -48,9 +47,8 @@ body {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    max-width: 100%; /* Make sure it doesn’t exceed the container width */
+    width: 100%;
     box-sizing: border-box; /* Ensure padding is included in the element's total width */
-    overflow: hidden; /* Hide overflow */
 }
 
 /* Scrollable Table Container */
@@ -156,6 +154,7 @@ input[type="text"]::placeholder {
 @media (max-width: 599px) {
     .container {
         padding: 10px; /* Reduce padding on smaller screens */
+        width: 100%; /* Ensure full width on mobile screens */
         height: auto; /* Allow height to adjust based on content */
     }
 
