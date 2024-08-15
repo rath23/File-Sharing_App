@@ -83,7 +83,8 @@ public class FileServiceImpl implements FileService {
 
     }
 
-    @Scheduled(cron = "0 0 * * * *") // Runs every second
+    // @Scheduled(cron = "0 0 * * * *") 
+    @Scheduled(cron = "*/1 * * * * *")
     public void deleteExpiredFiles() {
         List<FileEntity> expiredFiles = fileRepository.findByExpiryTimeBefore(LocalDateTime.now());
         expiredFiles.forEach(fileRepository::delete);
