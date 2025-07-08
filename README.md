@@ -2,6 +2,8 @@
 
 A simple and secure file-sharing web application built with **Spring Boot**, **Thymeleaf**, **MySQL**, and **Spring MVC**. Users can register, verify their email, upload files, and share files with others. All shared files are automatically deleted after 24 hours.
 
+**URL : ** https://file-sharingapp-production.up.railway.app/files
+
 ## 🚀 Features
 
 - 📝 User registration with email verification
