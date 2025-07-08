@@ -23,22 +23,22 @@ A simple and secure file-sharing web application built with **Spring Boot**, **T
 ## 📸 Screenshots
 
 ### 🔐 Login Page
-![Login](Screenshots/Screenshot%202025-07-08%20175215.png)
+![Login](./src/main/resources/static/screenshots/Screenshot%202025-07-08%20175215.png)
 
 ### 🧾 Registration Page
-![Register](./main/resources/static/screenshots/Screenshot%202025-07-08%20175252.png)
+![Register](./src/main/resources/static/screenshots/Screenshot%202025-07-08%20175252.png)
 
 ### ✅ Signup Success Message
-![Signup Success](./main/resources/static/screenshots/Screenshot%202025-07-08%20175313.png)
+![Signup Success](./src/main/resources/static/screenshots/Screenshot%202025-07-08%20175313.png)
 
 ### 📧 Email Verification Mail
-![Verification Mail](./main/resources/static/screenshots/Screenshot%202025-07-08%20175355.png)
+![Verification Mail](./src/main/resources/static/screenshots/Screenshot%202025-07-08%20175355.png)
 
 ### 🎉 Verified Account Message
-![Verified](./main/resources/static/screenshots/Screenshot%202025-07-08%20175407.png)
+![Verified](./src/main/resources/static/screenshots/Screenshot%202025-07-08%20175407.png)
 
 ### 📥 File Download & Share Page
-![Download & Share1](./main/resources/static/screenshots/Screenshot%202025-07-08%20175457.png)
+![Download & Share1](./src/main/resources/static/screenshots/Screenshot%202025-07-08%20175457.png)
 
 -----------------------------------------------------------------------------
 ![Download & Share2](./main/resources/static/screenshots/Screenshot%202025-07-08%20180434.png)
