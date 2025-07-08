@@ -24,13 +24,13 @@ A simple and secure file-sharing web application built with **Spring Boot**, **T
 ![Login](Screenshots/Screenshot%202025-07-08%20175215.png)
 
 ### 🧾 Registration Page
-![Register](./screenshots/Screenshot%202025-07-08%20175252.png)
+![Register](./Screenshots/Screenshot%202025-07-08%20175252.png)
 
 ### ✅ Signup Success Message
-![Signup Success](./screenshots/Screenshot%202025-07-08%20175313.png)
+![Signup Success](./Screenshots/Screenshot%202025-07-08%20175313.png)
 
 ### 📧 Email Verification Mail
-![Verification Mail](./screenshots/Screenshot%202025-07-08%20175355.png)
+![Verification Mail](./Screenshots/Screenshot%202025-07-08%20175355.png)
 
 ### 🎉 Verified Account Message
 ![Verified](./screenshots/Screenshot%202025-07-08%20175407.png)
