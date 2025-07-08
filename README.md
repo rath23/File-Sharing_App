@@ -21,7 +21,7 @@ A simple and secure file-sharing web application built with **Spring Boot**, **T
 ## 📸 Screenshots
 
 ### 🔐 Login Page
-![Login](./screenshots/Screenshot%202025-07-08%20175215.png)
+![Login](Screenshots/Screenshot%202025-07-08%20175215.png)
 
 ### 🧾 Registration Page
 ![Register](./screenshots/Screenshot%202025-07-08%20175252.png)
