@@ -39,7 +39,11 @@ A simple and secure file-sharing web application built with **Spring Boot**, **T
 
 ### 📥 File Download & Share Page
 ![Download & Share1](./Screenshots/Screenshot%202025-07-08%20175457.png)
+
+-----------------------------------------------------------------------------
 ![Download & Share2](./Screenshots/Screenshot%202025-07-08%20180434.png)
+
+-----------------------------------------------------------------------------
 ![Share](./Screenshots/Screenshot%202025-07-08%20180453.png)
 
 ## 🛠 How It Works
