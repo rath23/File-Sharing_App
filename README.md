@@ -33,10 +33,12 @@ A simple and secure file-sharing web application built with **Spring Boot**, **T
 ![Verification Mail](./Screenshots/Screenshot%202025-07-08%20175355.png)
 
 ### 🎉 Verified Account Message
-![Verified](./screenshots/Screenshot%202025-07-08%20175407.png)
+![Verified](./Screenshots/Screenshot%202025-07-08%20175407.png)
 
 ### 📥 File Download & Share Page
-![Download & Share](./screenshots/Screenshot%202025-07-08%20180453.png)
+![Download & Share1](./Screenshots/Screenshot%202025-07-08%20175457.png)
+![Download & Share2](./Screenshots/Screenshot%202025-07-08%20180434.png)
+![Share](./Screenshots/Screenshot%202025-07-08%20180453.png)
 
 ## 🛠 How It Works
 
