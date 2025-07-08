@@ -41,10 +41,10 @@ A simple and secure file-sharing web application built with **Spring Boot**, **T
 ![Download & Share1](./src/main/resources/static/screenshots/Screenshot%202025-07-08%20175457.png)
 
 -----------------------------------------------------------------------------
-![Download & Share2](./main/resources/static/screenshots/Screenshot%202025-07-08%20180434.png)
+![Download & Share2](./src/main/resources/static/screenshots/Screenshot%202025-07-08%20180434.png)
 
 -----------------------------------------------------------------------------
-![Share](./main/resources/static/screenshots/Screenshot%202025-07-08%20180453.png)
+![Share](./src/main/resources/static/screenshots/Screenshot%202025-07-08%20180453.png)
 
 ## 🛠 How It Works
 
